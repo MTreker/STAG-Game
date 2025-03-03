@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Day 07 - Game Objects</title>
+  <style>
+    * {
+      margin: 0px;
+      overflow: hidden;
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="canv"></canvas>
+
+  <script src="./engine/Engine.js"></script>
+  <script src="./engine/GameObject.js"></script>
+  <script src="./engine/Time.js"></script>
+  <script src="./engine/Collisions.js"></script>
+  <script src="./engine/Input.js"></script>
+  <script src="./engine/Scene.js"></script>
+
+  <script src="./game/ControllerGameObject.js"></script>
+  <script src="./game/ScoreGameObject.js"></script>
+  <script src="./game/GuardGameObject.js"></script>
+  <script src="./game/PlayerGameObject.js"></script>
+  <script src="./game/MainScene.js"></script>
+  <script src="./game/DeathScene.js"></script>
+  <script src="./game/WinScene.js"></script>
+
+  <script>
+
+
+    // Engine-specific state variables
+    let canvas
+    let ctx
+
+    
+    //Game loop (engine code)
+    function tick() {
+        Engine.currentScene.update()
+        Engine.currentScene.draw()
+    }
+
+
+    /**
+     * Setup the internals for the controller and view to run (engine code)
+    */
+    function setup() {
+      window.addEventListener("keydown", Input.keydown)
+      window.addEventListener("keyup", Input.keyup)
+
+      canvas = document.getElementById("canv")
+      ctx = canvas.getContext("2d")
+    }
+
+    setup() //Setup the mechanics of the game (engine code)
+
+
+    Engine.currentScene = new MainScene()
+    Engine.currentScene.start()
+    //start() //Setup the state of the game (game code)
+
+    setInterval(tick, Time.msBetweenFrames) //Start the game loop (engine code)
+
+  </script>
+</body>
+
+</html>
