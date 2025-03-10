@@ -1,3 +1,0 @@
-class Engine{
-  static currentScene
-}
