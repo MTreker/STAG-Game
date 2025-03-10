@@ -2,90 +2,65 @@
 <html>
 
 <head>
-  <!-- Title displayed in the browser tab -->
-  <title>Day 09 - Components</title>
-
-  <!-- CSS for our game -->
+  <title>Day 07 - Game Objects</title>
   <style>
     * {
-      /* Remove any margin */
       margin: 0px;
-
-      /* Never show scroll bars */
       overflow: hidden;
     }
   </style>
 </head>
 
 <body>
-  <!-- The canvas we will draw in -->
   <canvas id="canv"></canvas>
 
-  <!-- Engine classes -->
   <script src="./engine/Engine.js"></script>
   <script src="./engine/GameObject.js"></script>
   <script src="./engine/Time.js"></script>
   <script src="./engine/Collisions.js"></script>
   <script src="./engine/Input.js"></script>
   <script src="./engine/Scene.js"></script>
-  <script src="./engine/Component.js"></script>
 
-  <!-- Engine components -->
-  <script src="./engine/components/Transform.js"></script>
-  <script src="./engine/components/Circle.js"></script>
-  <script src="./engine/components/KeyboardMovement.js"></script>
-  <script src="./engine/components/Text.js"></script>
-
-  <!-- Components -->
-  <script src="./game/components/DeathSceneController.js"></script>
-  <script src="./game/components/GuardMovement.js"></script>
-  <script src="./game/components/MainSceneController.js"></script>
-  <script src="./game/components/PlayerConstraints.js"></script>
-  <script src="./game/components/ScoreUpdater.js"></script>
-  <script src="./game/components/WinSceneController.js"></script>
-
-  <!-- Game objects -->
-  <script src="./game/gameObjects/ControllerGameObject.js"></script>
-  <script src="./game/gameObjects/DeathController.js"></script>
-  <script src="./game/gameObjects/DeathTextGameObject.js"></script>
-  <script src="./game/gameObjects/GuardGameObject.js"></script>
-  <script src="./game/gameObjects/LevelNumberGameObject.js"></script>
-  <script src="./game/gameObjects/PlayerGameObject.js"></script>
-  <script src="./game/gameObjects/ScoreGameObject.js"></script>
-  <script src="./game/gameObjects/WinController.js"></script>
-  <script src="./game/gameObjects/WinTextGameObject.js"></script>
-
-  <!-- Scenes -->
-  <script src="./game/scenes/DeathScene.js"></script>
-  <script src="./game/scenes/MainScene.js"></script>
-  <script src="./game/scenes/WinScene.js"></script>
+  <script src="./game/ControllerGameObject.js"></script>
+  <script src="./game/ScoreGameObject.js"></script>
+  <script src="./game/GuardGameObject.js"></script>
+  <script src="./game/PlayerGameObject.js"></script>
+  <script src="./game/MainScene.js"></script>
+  <script src="./game/DeathScene.js"></script>
+  <script src="./game/WinScene.js"></script>
 
   <script>
-    // Engine-specific state variables
-    let canvas // A reference to the canvas element
-    let ctx   // A reference to the 2d drawing context in the canvas drawing element
 
+
+    // Engine-specific state variables
+    let canvas
+    let ctx
+
+    
     //Game loop (engine code)
     function tick() {
-      Engine.currentScene.update() // Update the engine
-      Engine.currentScene.draw() // Draw the engine
+        Engine.currentScene.update()
+        Engine.currentScene.draw()
     }
+
 
     /**
      * Setup the internals for the controller and view to run (engine code)
     */
     function setup() {
-      window.addEventListener("keydown", Input.keydown) // Listen for key down events and send them to the Input class
-      window.addEventListener("keyup", Input.keyup)     // Listen for key up events and send them to the Input class
+      window.addEventListener("keydown", Input.keydown)
+      window.addEventListener("keyup", Input.keyup)
 
-      canvas = document.getElementById("canv")  // Get the canvas element
-      ctx = canvas.getContext("2d")             // Get the 2d drawing context
+      canvas = document.getElementById("canv")
+      ctx = canvas.getContext("2d")
     }
 
     setup() //Setup the mechanics of the game (engine code)
 
-    Engine.currentScene = new MainScene() //Assign the start scene (game-specific code)
-    Engine.currentScene.start() //Setup the state of the game (game code)
+
+    Engine.currentScene = new MainScene()
+    Engine.currentScene.start()
+    //start() //Setup the state of the game (game code)
 
     setInterval(tick, Time.msBetweenFrames) //Start the game loop (engine code)
 
