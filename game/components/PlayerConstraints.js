@@ -1,7 +1,8 @@
 class PlayerConstraints extends Component {
     update() {
-        if (this.transform.x < 50) this.transform.x = 50
-        if (this.transform.x > 200) this.transform.x = 200
-        if (this.transform.y < 75) this.transform.y = 75
+        if (this.playerX < 100) this.playerX = 100
+        if (this.playerX > 500) this.playerX = 500
+        if (this.playerY < 100) this.playerY = 100
+        if (this.playerY > 500) this.playerY = 500
     }
 }

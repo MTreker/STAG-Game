@@ -1,11 +1,9 @@
 class GuardGameObject extends GameObject {
-  constructor(name, speed, offset = 0){
+  constructor(name) {
     super(name)
-    this.speed = speed
-    this.offset = offset
   }
   start() {
-    this.addComponent(new Circle("blue", "purple", 5))
-    this.addComponent(new GuardMovement(this.speed, this.offset))
+    this.addComponent(new Circle("black", "black", 5))
+    this.addComponent(new GuardMovement())
   }
 }
