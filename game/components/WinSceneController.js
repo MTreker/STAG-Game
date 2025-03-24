@@ -11,7 +11,7 @@ class WinSceneController extends Component{
     if (this.timeSinceWin > 3) {
       //Start main scene
       Globals.score = 0
-      Engine.nextScene = new Level_01_Scene()
+      Engine.nextScene = new Level_02_Scene()
     }
   }
 }

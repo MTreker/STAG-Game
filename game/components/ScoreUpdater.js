@@ -8,6 +8,6 @@ class ScoreUpdater extends Component{
     if(this.shouldUpdate)
       Globals.score += Time.deltaTime
     let roundedTime = Math.floor(Globals.score * 100) / 100
-    this.parent.components[1].text = "Score: " + roundedTime
+    this.parent.components[1].text = "Time: " + roundedTime
   }
 }
