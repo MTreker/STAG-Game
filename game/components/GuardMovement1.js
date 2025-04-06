@@ -17,7 +17,7 @@ class GuardMovement1 extends Component {
         // this.spawnerY = 250
         // this.spawnerX2 = 250
         // this.spawnerY2 = 30
-        this.timer = 20
+        this.timer = 50
 
         this.lastX = 0
         this.lastY = 0
