@@ -1,10 +1,9 @@
 class GuardMovement1 extends Component {
-    constructor() {
+    constructor(g_timer = 50) {
         super()
-        this.bullet_count_X = [] // Stores {x, y} of bullets moving right
+        this.g_timer = g_timer
         // this.bullet_count_Y = [] // Stores {x, y} of bullets moving down
     }
-    timer
 
     randomX
     randomY
@@ -17,27 +16,25 @@ class GuardMovement1 extends Component {
         // this.spawnerY = 250
         // this.spawnerX2 = 250
         // this.spawnerY2 = 30
-        this.timer = 50
 
         this.lastX = 0
         this.lastY = 0
     }
 
     update() {
-        this.timer -= 1
+        this.g_timer -= 1
 
         // Spawner movement
         function getRandomNumber(min, max) {
             return Math.floor(Math.random() * (max - min + 1)) + min
         }
-
-        if (this.timer == 0) {
+        if (this.g_timer == 0) {
             this.randomY = getRandomNumber(150, 475)
             // this.randomX2 = getRandomNumber(150, 475)
 
             if (this.randomY !== this.lastY) {
+                SharedState.randomY = this.randomY
                 this.transform.y = this.randomY
-                this.bullet_count_X.push({ x: this.transform.x, y: this.transform.y })
                 this.lastY = this.randomY
             }
 
@@ -47,7 +44,7 @@ class GuardMovement1 extends Component {
             //     this.lastX = this.randomX2
             // }
 
-            this.timer = 50
+            this.g_timer = 50
         }
     }
 }
