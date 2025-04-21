@@ -1,12 +1,13 @@
 class BulletMovement2 extends Component {
-    constructor(name, g_timer = 0) {
-        super(name)
+    constructor(g_timer = 0, b_speed = 0) {
+        super()
         this.g_timer = g_timer
+        this.b_speed = b_speed
         this.bullet_count_Y = []
       }
     start() {
         this.lastX2 = 0
-        
+        this.g_restart = this.g_timer
     }
     update() {
         this.g_timer -= 1
@@ -20,11 +21,11 @@ class BulletMovement2 extends Component {
                 this.lastX = this.randomX2
             }
 
-            this.g_timer = 50
+            this.g_timer = this.g_restart
         }
         // Move bullets
         for (let bullet of this.bullet_count_Y) {
-            bullet.y += 5
+            bullet.y += this.b_speed
         }
         // Remove bullets if they go off-screen
         this.bullet_count_Y = this.bullet_count_Y.filter(b => b.y <= 520)

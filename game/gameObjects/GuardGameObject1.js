@@ -6,6 +6,6 @@ class GuardGameObject1 extends GameObject {
   start() {
     this.addComponent(new Circle("black", "black", 5))
     this.addComponent(new GuardMovement1(this.g_timer))
-    this.addComponent(new BulletMovement1(this.g_timer))
+    this.addComponent(new BulletMovement1())
   }
 }

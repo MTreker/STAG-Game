@@ -1,6 +1,6 @@
 class GuardMovement1 extends Component {
-    constructor(name, g_timer = 0) {
-        super(name)
+    constructor(g_timer = 0) {
+        super()
         this.g_timer = g_timer
 
     }
@@ -19,6 +19,8 @@ class GuardMovement1 extends Component {
 
         this.lastX = 0
         this.lastY = 0
+
+        this.g_restart = this.g_timer
     }
 
     update() {
@@ -44,7 +46,7 @@ class GuardMovement1 extends Component {
             //     this.lastX = this.randomX2
             // }
 
-            this.g_timer = 50
+            this.g_timer = this.g_restart
         }
     }
 }

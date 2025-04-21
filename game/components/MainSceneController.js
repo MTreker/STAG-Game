@@ -2,6 +2,10 @@ class MainSceneController extends Component {
     constructor(nextScene) {
         super()
         this.nextScene = nextScene
+        this.gate = true
+    }
+    start() {
+        
     }
     update() {
         let playerGameObject = Engine.currentScene.findGameObject("Player Game Object")
@@ -25,8 +29,6 @@ class MainSceneController extends Component {
         //             }
         //         }
         //     }
-
-        //     // Optional: Vertical bullets, if implemented
         //     if (bulletComponent2) {
         //         for (let bullet of bulletComponent2.bullet_count_Y) {
         //             if (Collisions.inCollision(
@@ -42,8 +44,10 @@ class MainSceneController extends Component {
         // }
 
 
-        if (Time.elapsedTime > 1000000) {
-            Engine.nextScene = new this.nextScene()
+        if (Globals.score >= 10 && this.gate == true) {
+            Engine.nextScene = new this.nextScene() // do this if statement 2 times
+            this.gate = false
+            Globals.score = 0 // make a variable that gets the score cause this has to reset for some reason
         }
 
         if (Input.keysdown.includes("Space")) {
