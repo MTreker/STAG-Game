@@ -40,7 +40,7 @@ class MainSceneController extends Component {
         }
         
 
-        if (Globals.score >= 5000000000) {
+        if (Globals.score >= 5) {
             Engine.nextScene = new this.nextScene() // do this if statement 2 times
             Globals.score = 0 // make a variable that gets the score cause this has to reset for some reason
         }

@@ -14,6 +14,7 @@ class GuardMovement2 extends Component {
     }
 
     update() {
+        const gravity = 0.5
         this.g_timer -= 1
         function getRandomNumber(min, max) {
             return Math.floor(Math.random() * (max - min + 1)) + min
@@ -24,7 +25,7 @@ class GuardMovement2 extends Component {
 
             if (this.randomX2 !== this.lastX) {
                 this.transform.x = this.randomX2
-                this.bullet_count_Y.push({ x: this.transform.x, y: this.transform.y, vx: 0, vy: this.b_speed })
+                this.bullet_count_Y.push({ x: this.transform.x, y: this.transform.y, vx: 0, vy: 0 })
                 this.lastX = this.randomX2
             }
 
@@ -32,10 +33,12 @@ class GuardMovement2 extends Component {
         }
         // Move bullets
         for (let bullet of this.bullet_count_Y) {
-            bullet.y += this.b_speed
+            bullet.vy += gravity
+            bullet.x += bullet.vx
+            bullet.y += bullet.vy
         }
         // Remove bullets if they go off-screen
-        this.bullet_count_Y = this.bullet_count_Y.filter(b => b.y <= 500)
+        this.bullet_count_Y = this.bullet_count_Y.filter(b => b.y <= 520)
 
 
     }
